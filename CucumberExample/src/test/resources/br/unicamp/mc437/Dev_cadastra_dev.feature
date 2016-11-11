@@ -1,14 +1,32 @@
 # encoding: UTF-8
-Feature: This is a sample feature 
+Feature: dev cadastra dev
+  Como novo usuario
+  Quero cadastrar como desenvolvedor
+  Para poder desenvolver software para a conpec
+  
+  Background:
+     Given Estou na pagina de cadastrar dev
+     And nao estou logado
 
-  #  Scenario Tag ID is the test case id in TestRail,TestLink,ALM. multiple cases separated with blank space
-  #  1. if the tag id is empty then it will create this scenario test case in your testRail,TestLink or ALM,
-  #  2. but if you specified the scenario tag id as the test case id,then it will just update the existing test case .
-  #  Scenario title is the Test Case name in TestRail,TestLink,ALM
-  #  Step sentence is the 'cucumber' field value in TestRail,TestLink,ALM
-
-  @caseid1 @caseid2
-  Scenario: sample scenario title,you can put any title for it
-     Given I open the url
-     When I input my user name and password with "Alter" and "password"
-     Then I should go to the home page
+  Scenario: cadastro novo dev com sucesso
+     Given Nenhum usuario esta cadastrado
+     When Eu preencho o campo usuario como "dev123"
+     And Preencho o restante dos campos com dados validos 
+     Then Devo ir para a pagina confirmando cadastro de "dev123"
+     
+  Scenario: falha no cadastro com campos invalidos
+     Given Nenhum usuario esta cadastrado
+     When Preencho os campos de registro com dados invalidos 
+     Then Recebo feedback de como preencher os campos corretamente
+     
+  Scenario: falha no cadastro por conflito com os outros usuarios
+     Given existem usuarios cadastrados
+     When tento cadastrar com dados conflitantes com usuarios cadastrados
+     Then Sou informado dos dados conflitantes 
+      
+  
+     
+      
+     		
+      
+     		
