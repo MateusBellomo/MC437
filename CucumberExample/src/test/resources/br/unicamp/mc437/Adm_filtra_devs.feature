@@ -1,9 +1,12 @@
-Feature: Register on Bodgeit
-  As an user
-  I want to register on Bodgeit
-  So that I am registered
+Feature: Adm filtra Devs
+  Como um usuário Adm
+  Eu quero filtrar os desenvolvedores listados na tela
+  
+  Background:
+  	Given desenvolvedores "João" e "Pedro"
 
-  Scenario: register is done
-     Given the page is open "http://localhost:8080/bodgeit/register.jsp"
-     When I introduce my username "student@unicamp.br" and password "student"
-     Then a page should show the message "You have successfully registered with the BodgeIt Store."
+  Scenario: Adm edita informações do filtro
+     Given a página de listagem de desenvolvedores está aberta
+     And eu editei as informações do filtro com detalhes pertencentes à João e não à Pedro
+     When eu Clico no botão "Pesquisar"
+     Then a lista de usuários é atualizada, contendo João e não contendo Pedro
