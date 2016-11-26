@@ -1,10 +1,18 @@
 package br.unicamp.mc437;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.fail;
 
+import java.io.File;
 import java.io.IOException;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import cucumber.annotation.After;
 import cucumber.annotation.Before;
 import cucumber.annotation.en.Given;
@@ -32,22 +40,22 @@ public class Adm_filtra_devsScenario {
     	fail("");
     }
     
-    @Given("^a página de listagem de desenvolvedores está aberta$")
+    @Given("^a pagina de listagem de desenvolvedores esta aberta$")
     public void admFiltraDevPaginaAberta() throws Throwable {
     	fail("");
     }
     
-    @Given("^eu editei as informações do filtro com detalhes pertencentes à João e não à Pedro$")
+    @Given("^eu editei as informações do filtro com detalhes pertencentes a Joao e nao a Pedro$")
     public void admFiltraDevEditoInfoFiltro() throws Throwable {
     	fail("");
     }
     
-    @When("^eu Clico no botão \"([^\"]*)\"$")
+    @When("^eu Clico no botao \"([^\"]*)\"$")
     public void admFiltraDevClicoPesquisar(String textName) throws Throwable {
     	fail("");
     }
     
-    @Then("^a lista de usuários é atualizada, contendo João e não contendo Pedro$")
+    @Then("^a lista de usuarios e atualizada, contendo Joao e nao contendo Pedro$")
     public void admFiltraDevListaAtt() throws Throwable {
     	fail("");
     }

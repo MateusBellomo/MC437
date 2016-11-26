@@ -63,7 +63,7 @@ public class Adm_lista_devsScenario {
   	@Then("^Devem ter (\\d+) listados$")
   	public void admListaDevsMostrarListagem(int num) throws Throwable {
   		List<WebElement> rows =  driver.findElements(By.cssSelector("table#example>tbody>tr"));
-  		WebElement searchBox = driver.findElement(By.cssSelector(""));
+  		//WebElement searchBox = driver.findElement(By.cssSelector(""));
   		System.out.println("number of rows: " + rows.size());
   		Assert.assertEquals(rows.size(), num);
   	}

@@ -1,12 +1,12 @@
 Feature: Adm filtra Devs
-  Como um usuário Adm
+  Como um usuario Adm
   Eu quero filtrar os desenvolvedores listados na tela
   
   Background:
-  	Given desenvolvedores "João" e "Pedro"
+  	Given desenvolvedores "Joao" e "Pedro"
 
   Scenario: Adm edita informações do filtro
-     Given a página de listagem de desenvolvedores está aberta
-     And eu editei as informações do filtro com detalhes pertencentes à João e não à Pedro
+     Given a pagina de listagem de desenvolvedores esta aberta
+     And eu editei as informações do filtro com detalhes pertencentes a Joao e nao a Pedro
      When eu Clico no botão "Pesquisar"
-     Then a lista de usuários é atualizada, contendo João e não contendo Pedro
+     Then a lista de usuarios e atualizada, contendo Joao e nao contendo Pedro
