@@ -8,7 +8,7 @@ Feature: Administrador lista desenvolvedores
 
    	Examples:
 	    |  devs  |
-	    |   12   |
+	    |   10   |
 	    |   20   |
 		|   1    |
 	    |   5    |
