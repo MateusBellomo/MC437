@@ -30,12 +30,18 @@ public class CadastraDevService extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Gson gson = new Gson();
-		CadastraDevMessage message = gson.fromJson(request.getParameter("json"), CadastraDevMessage.class);
-		response.setContentType("application/json");
-		response.setCharacterEncoding("UTF-8");
-		PrintWriter writer = response.getWriter();
-		writer.append("{ status: “ok”, name: \""+message.getNome()+"\"}");
+		try{
+			Gson gson = new Gson();
+			CadastraDevMessage message = gson.fromJson(request.getParameter("json"), CadastraDevMessage.class);
+			response.setContentType("application/json");
+			response.setCharacterEncoding("UTF-8");
+			PrintWriter writer = response.getWriter();
+			writer.append("{ status: “ok” }");
+		} catch (Exception e) {
+			response.setContentType("application/json");
+			response.setCharacterEncoding("UTF-8");
+			response.getWriter().append("{ status: “fail”, message:"+e.getMessage()+" }");
+		}
 	}
 
 }
