@@ -87,7 +87,8 @@ public class Dev_cadastra_devScenario {
     
     @Then("^Devo ir para a pagina confirmando cadastro de \"([^\"]*)\"$")
     public void irPaginaConfirmacaoCadastro(String username) throws Throwable {
-    	fail("");
+    	WebDriverWait wait = new WebDriverWait(driver, 15);
+    	wait.until(ExpectedConditions.presenceOfElementLocated(By.id("msg")));
     }
     
     @When("^Preencho os campos de registro com dados invalidos$")
