@@ -37,6 +37,7 @@ public class CadastraDevService extends HttpServlet {
 			response.setCharacterEncoding("UTF-8");
 			PrintWriter writer = response.getWriter();
 			writer.append("{ status: “ok” }");
+			
 		} catch (Exception e) {
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");
