@@ -9,10 +9,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+
 /**
  * Servlet implementation class CadastraDevService
  */
-@WebServlet("/service/cadastraDevService")
+@WebServlet("/service/dev/cadastraDevService")
 public class CadastraDevService extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -28,10 +30,12 @@ public class CadastraDevService extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Gson gson = new Gson();
+		CadastraDevMessage message = gson.fromJson(request.getParameter("json"), CadastraDevMessage.class);
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
 		PrintWriter writer = response.getWriter();
-		writer.append("{ status: “ok” }");
+		writer.append("{ status: “ok”, name: \""+message.getNome()+"\"}");
 	}
 
 }
