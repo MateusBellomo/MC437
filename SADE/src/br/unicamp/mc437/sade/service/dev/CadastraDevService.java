@@ -11,6 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
+import br.unicamp.mc437.sade.dataService.GenericService;
+import br.unicamp.mc437.sade.dataService.GenericServiceImpl;
+import br.unicamp.mc437.sade.persistance.Desenvolvedor;
+import br.unicamp.mc437.sade.util.HibernateUtil;
+
 /**
  * Servlet implementation class CadastraDevService
  */
@@ -31,12 +36,19 @@ public class CadastraDevService extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try{
+
+			GenericService<Desenvolvedor> devService = new GenericServiceImpl<Desenvolvedor>(
+					Desenvolvedor.class, HibernateUtil.getSessionFactory());
+			
 			Gson gson = new Gson();
-			CadastraDevMessage message = gson.fromJson(request.getParameter("json"), CadastraDevMessage.class);
+			Desenvolvedor dev = gson.fromJson(request.getParameter("json"), Desenvolvedor.class);
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");
 			PrintWriter writer = response.getWriter();
 			writer.append("{ status: “ok” }");
+			
+			devService.save(dev);
+			
 			
 		} catch (Exception e) {
 			response.setContentType("application/json");
