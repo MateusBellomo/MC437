@@ -5,6 +5,9 @@ import static org.assertj.core.api.Assertions.fail;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import junit.framework.Assert;
 
@@ -28,8 +31,6 @@ public class Dev_cadastra_devScenario {
     
     @Before
     public void setUp() throws IOException{
-    	//File classpathRoot = new File(System.getProperty("user.dir"));
-    	//File chromedriver = new File(classpathRoot, "driver/chromedriver");
     	System.setProperty("webdriver.chrome.driver", "driver/chromedriver");
     	driver = new ChromeDriver();
     }
@@ -41,13 +42,7 @@ public class Dev_cadastra_devScenario {
     
     @Given("^Estou na pagina de cadastrar dev$")
     public void abrirPaginaCadastroDev() throws Throwable {
-    	driver.get("file:///home/cc2013/ra148131/workspace/MC437/SADE-Backend/WebContent/WEB-INF/Dev.html");
-    }
-    
-    // And
-    @Given("^nao estou logado$")
-    public void checarNaoLogado() throws Throwable {
-    	
+    	driver.get("file:///home/cc2013/ra148131/workspace/MC437/SADE/WebContent/Dev.html");
     }
 
     @Given("^Nenhum usuario esta cadastrado$")
@@ -58,17 +53,16 @@ public class Dev_cadastra_devScenario {
     @When("^Eu preencho o campo usuario como \"([^\"]*)\"$")
     public void preenchoCampoUsuarioCadastro(String username) throws Throwable {
     	usr_name.sendKeys(username);
-
     }
     
     @When("^Preencho o restante dos campos com dados validos$")
     public void preenchoCamposCadastro() throws Throwable {
     	WebElement aux = driver.findElement(By.id("inputRG"));
-    	aux.sendKeys("99.999.999-9");    	
+    	aux.sendKeys("999999999");    	
     	aux = driver.findElement(By.id("inputTelRes"));
-    	aux.sendKeys("(99)99896-9999");  
+    	aux.sendKeys("(99)99896999");  
     	aux = driver.findElement(By.id("inputCel"));
-    	aux.sendKeys("(99)99999-9669"); 
+    	aux.sendKeys("(99)998969999"); 
     	aux = driver.findElement(By.id("inputEnd"));
     	aux.sendKeys("Rua Abc 233"); 
     	aux = driver.findElement(By.id("inputInst"));
@@ -81,14 +75,19 @@ public class Dev_cadastra_devScenario {
     	aux.sendKeys("100"); 
     	aux = driver.findElement(By.id("inputHorasEst"));
     	aux.sendKeys("50"); 
-    	//Thread.sleep(5000);
-    	aux.submit();
     }
     
     @Then("^Devo ir para a pagina confirmando cadastro de \"([^\"]*)\"$")
     public void irPaginaConfirmacaoCadastro(String username) throws Throwable {
-    	WebDriverWait wait = new WebDriverWait(driver, 15);
-    	wait.until(ExpectedConditions.presenceOfElementLocated(By.id("msg")));
+    	WebElement submit = driver.findElement(By.id("submit"));
+    	String classe = submit.getAttribute("class");
+    	
+    	System.out.println("classes: " + classe);
+    	
+    	if (classe.contains("disabled"))
+    		fail("");
+    	
+    	//submit.click();
     }
     
     @When("^Preencho os campos de registro com dados invalidos$")
@@ -104,20 +103,22 @@ public class Dev_cadastra_devScenario {
     	aux = driver.findElement(By.id("inputInst"));
     	aux.sendKeys("1987"); 
     	aux = driver.findElement(By.id("inputCurso"));
-    	aux.sendKeys("Presidente"); 
+    	aux.sendKeys(""); 
     	aux = driver.findElement(By.id("inputHorasGrad"));
     	aux.sendKeys("-1"); 
     	aux = driver.findElement(By.id("inputHorasDisp"));
-    	aux.sendKeys("99999999999"); 
+    	aux.sendKeys(""); 
     	aux = driver.findElement(By.id("inputHorasEst"));
     	aux.sendKeys("Nada"); 
-    	//Thread.sleep(5000);
-    	aux.submit();
     }
     
-    @Then("^Recebo feedback de como preencher os campos corretamente$")
+    @Then("^Nao devo conseguir cadastrar$")
     public void feedbackCamposRegistro() throws Throwable {
-    	fail("");
+    	WebElement submit = driver.findElement(By.id("submit"));
+    	String classe = submit.getAttribute("class");
+    	
+    	if (!classe.contains("disabled"))
+    		fail("");
     }
     
     @Given("^existem usuarios cadastrados$")

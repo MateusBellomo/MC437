@@ -6,7 +6,6 @@ Feature: dev cadastra dev
   
   Background:
      Given Estou na pagina de cadastrar dev
-     And nao estou logado
 
   Scenario: cadastro novo dev com sucesso
      Given Nenhum usuario esta cadastrado
@@ -17,7 +16,7 @@ Feature: dev cadastra dev
   Scenario: falha no cadastro com campos invalidos
      Given Nenhum usuario esta cadastrado
      When Preencho os campos de registro com dados invalidos 
-     Then Recebo feedback de como preencher os campos corretamente
+     Then Nao devo conseguir cadastrar
      
   Scenario: falha no cadastro por conflito com os outros usuarios
      Given existem usuarios cadastrados
