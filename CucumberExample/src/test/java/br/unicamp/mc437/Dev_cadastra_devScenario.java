@@ -61,6 +61,8 @@ public class Dev_cadastra_devScenario {
     	aux.sendKeys("999999999");    	
     	aux = driver.findElement(By.id("inputTelRes"));
     	aux.sendKeys("(99)99896999");  
+    	aux = driver.findElement(By.id("inputEmail"));
+    	aux.sendKeys("voce@email.com");  
     	aux = driver.findElement(By.id("inputCel"));
     	aux.sendKeys("(99)998969999"); 
     	aux = driver.findElement(By.id("inputEnd"));
@@ -70,11 +72,13 @@ public class Dev_cadastra_devScenario {
     	aux = driver.findElement(By.id("inputCurso"));
     	aux.sendKeys("Ciência da Computação"); 
     	aux = driver.findElement(By.id("inputHorasGrad"));
-    	aux.sendKeys("90"); 
+    	aux.sendKeys("9"); 
     	aux = driver.findElement(By.id("inputHorasDisp"));
-    	aux.sendKeys("100"); 
+    	aux.sendKeys("1"); 
     	aux = driver.findElement(By.id("inputHorasEst"));
-    	aux.sendKeys("50"); 
+    	aux.sendKeys("5");
+    	  //Thread.sleep(9000);  // Let the user actually see something!
+
     }
     
     @Then("^Devo ir para a pagina confirmando cadastro de \"([^\"]*)\"$")
