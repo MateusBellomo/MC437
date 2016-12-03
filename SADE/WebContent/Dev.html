@@ -45,64 +45,72 @@
         <h1>Informações Pessoais</h1>
       </div>
       <div class="well">
-        <form class="form-horizontal">
+        <form class="form-horizontal" data-toggle="validator" role="form">
           <fieldset>
+
             <div class="form-group">
               <label for="inputNome" class="col-lg-2 control-label">Nome</label>
-              <div class="col-lg-7">
-                <input class="form-control" id="inputNome" name="nome" placeholder="Nome" type="text">
+              <div class="col-lg-10">
+                <input class="form-control" id="inputNome" name="nome" placeholder="Nome" type="text" maxlength="30" required>
               </div>
-              <label for="inputRG" class="col-lg-1 control-label">RG</label>
+            </div>              
+            <div class="form-group">
+              <label for="inputRG" class="col-lg-2 control-label">RG</label>
               <div class="col-lg-2">
-                <input class="form-control" id="inputRG" name="rg" placeholder="99.999.999-9" type="text">
+                <input class="form-control" id="inputRG" name="rg" placeholder="999999999" type="text" maxlength="12"  data-error="999999999" pattern="[0-9]{9}" required>
+                <div class="help-block with-errors"></div>
+                </div>
+            </div>
+            <div class="form-group">
+              <label for="inputTelRes" class="col-lg-2 control-label">Telefone Residencial</label>
+              <div class="col-lg-2">
+                <input class="form-control" id="inputTelRes" name="tel-res" placeholder="(99)99999999" type="text" maxlength="13" data-error="(99)99999999" pattern="\([0-9]{2}\)[0-9]{8}">
+                <div class="help-block with-errors"></div>
               </div>
             </div>
             <div class="form-group">
-              <div class="row">
-                <div class="col-lg-12">
-                  <label for="inputTelRes" class="col-lg-2 control-label">Telefone Residencial</label>
-                  <div class="col-lg-2">
-                    <input class="form-control" id="inputTelRes" name="tel-res" placeholder="(99)9999-9999" type="text">
-                  </div>
-                  <label for="inputCel" class="col-lg-2 control-label">Celular</label>
-                  <div class="col-lg-2">
-                    <input class="form-control" id="inputCel" name="tel-cel" placeholder="(99)99999-9999" type="text">
-                  </div>
-                </div>
+              <label for="inputCel" class="col-lg-2 control-label">Celular</label>
+              <div class="col-lg-2">
+                <input class="form-control" id="inputCel" name="tel-cel" placeholder="(99)999999999" type="text" maxlength="14" data-error="(99)999999999" pattern="\([0-9]{2}\)[0-9]{9}" required>
+                <div class="help-block with-errors"></div>
               </div>
             </div>
             <div class="form-group">
               <label for="inputEnd" class="col-lg-2 control-label">Endereço</label>
               <div class="col-lg-10">
-                <input class="form-control" id="inputEnd" name="endereco" placeholder="Endereço Atual" type="text">
+                <input class="form-control" id="inputEnd" name="endereco" placeholder="Endereço Atual" type="text" maxlength="50" required>
               </div>
             </div>
             <div class="form-group">
               <label for="inputInst" class="col-lg-2 control-label">Instituição de Ensino</label>
               <div class="col-lg-10">
-                <input class="form-control" id="inputInst" name="instituicao" placeholder="Instituição" type="text">
+                <input class="form-control" id="inputInst" name="instituicao" placeholder="Instituição" type="text" maxlength="50">
               </div>
             </div>
             <div class="form-group">
               <label for="inputCurso" class="col-lg-2 control-label">Curso</label>
               <div class="col-lg-10">
-                <input class="form-control" id="inputCurso" name="curso" placeholder="Ciência da Computação" type="text">
+                <input class="form-control" id="inputCurso" name="curso" placeholder="Ciência da Computação" type="text" maxlength="30" >
               </div>
             </div>
             <div class="form-group">
               <label for="inputHorasGrad" class="col-lg-2 control-label">Horas Graduação</label>
               <div class="col-lg-2">
-                <input class="form-control" id="inputHorasGrad" name="h-grad" placeholder="0" type="text">
+                <input class="form-control" id="inputHorasGrad" name="h-grad" placeholder="0" maxlength="2" type="number" min="0" max="40" required>
                 <span class="help-block">Horas/Semana</span>
               </div>
+            </div> 
+            <div class="form-group">
               <label for="inputHorasDisp" class="col-lg-2 control-label">Horas Disponível</label>
               <div class="col-lg-2">
-                <input class="form-control" id="inputHorasDisp" name="h-disp" placeholder="0" type="text">
+                <input class="form-control" id="inputHorasDisp" name="h-disp" placeholder="0" maxlength="2" type="number" min="0" max="40" required>
                 <span class="help-block">Horas/Semana</span>
               </div>
+            </div> 
+            <div class="form-group">
               <label for="inputHorasEst" class="col-lg-2 control-label">Horas Estágio</label>
               <div class="col-lg-2">
-                <input class="form-control" id="inputHorasEst" name="h-estag" placeholder="0" type="text">
+                <input class="form-control" id="inputHorasEst" name="h-estag" placeholder="0"  maxlength="2" type="number" min="0" max="40" required>
                 <span class="help-block">Horas/Semana</span>
               </div>
             </div>            
@@ -110,21 +118,21 @@
             <div class="form-group">
               <label for="inputCurriculo" class="col-lg-2 control-label">Link para Currículo</label>
               <div class="col-lg-10">
-                <input class="form-control" id="inputCurriculo" name="curriculo" placeholder="https://www.linkedin.com" type="text">
+                <input class="form-control" id="inputCurriculo" name="curriculo" placeholder="https://www.linkedin.com" type="text" maxlength="30">
               </div>
             </div>
                         
             <div class="form-group">
               <label for="taObsrvacoes" class="col-lg-2 control-label">Observações</label>
               <div class="col-lg-10">
-                <textarea class="form-control" rows="3" id="taObservacoes" name="observacoes" placeholder="Escreva aqui informações sobre sites já feitos, links ou comentários."></textarea>
+                <textarea class="form-control" rows="3" id="taObservacoes" name="observacoes" placeholder="Escreva aqui informações sobre sites já feitos, links ou comentários." maxlength="255"></textarea>
               </div>
             </div>
             
             <div class="form-group">
               <label for="inputConheceu" class="col-lg-2 control-label">Como conheceu a Conpec</label>
               <div class="col-lg-10">
-                <input class="form-control" id="inputConheceu" name="conheceu" type="text">
+                <input class="form-control" id="inputConheceu" name="conheceu" type="text" maxlength="30">
               </div>
             </div>
             
@@ -242,7 +250,8 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.js"></script>
-        <script type="text/javascript" src="js/bootstrap-slider.js"></script>
+    <script src="js/bootstrap-slider.js"></script>
+    <script src="js/validator.min.js"></script>
     <script type="text/javascript" >
     $('#sliderJava').slider({
     	formatter: function(value) {
@@ -308,8 +317,8 @@
       
       $.ajax({
         cache: false,
-        url: 'https://www.youtube.com/',
-        type: 'get',
+        url: '/SADE/service/dev/cadastraDevService',
+        type: 'post',
         datatype: 'json',
         success: function(data) {},
         data: {json: JSON.stringify(dataObj)}
