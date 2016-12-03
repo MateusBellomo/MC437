@@ -5,6 +5,9 @@ import static org.assertj.core.api.Assertions.fail;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
+
+import junit.framework.Assert;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -21,42 +24,48 @@ import cucumber.annotation.en.When;
 
 public class Adm_filtra_devsScenario {
     private WebDriver driver;
+    private String name1, name2;
+    
 
     @Before
     public void setUp() throws IOException{
     	//File classpathRoot = new File(System.getProperty("user.dir"));
     	//File chromedriver = new File(classpathRoot, "driver/chromedriver");
-    	//System.setProperty("webdriver.chrome.driver", chromedriver.getAbsolutePath());
-    	//driver = new ChromeDriver();
+    	System.setProperty("webdriver.chrome.driver", "driver/chromedriver");
+    	driver = new ChromeDriver();
     }
 
     @After
     public void tearDown(){
-    	//driver.close();
+    	driver.close();
     }
     
     @Given("^desenvolvedores \"([^\"]*)\" e \"([^\"]*)\"$")
     public void admFiltraDevTemDevs(String name1, String name2) throws Throwable {
-    	fail("");
+    	this.name1 = name1;
+    	this.name2 = name2;
     }
     
     @Given("^a pagina de listagem de desenvolvedores esta aberta$")
     public void admFiltraDevPaginaAberta() throws Throwable {
-    	fail("");
+    	driver.get("file:///home/cc2013/ra148131/workspace/MC437/SADE-Backend/WebContent/WEB-INF/Admin.html");
     }
     
-    @Given("^eu editei as informações do filtro com detalhes pertencentes a Joao e nao a Pedro$")
+    @When("^eu edito as informações do filtro com detalhes pertencentes a Airi Satou e nao a Ashton Cox$")
     public void admFiltraDevEditoInfoFiltro() throws Throwable {
-    	fail("");
+    	WebElement search = driver.findElement(By.cssSelector("div#example_filter>label>input"));
+    	search.sendKeys(name1); 
     }
     
-    @When("^eu Clico no botao \"([^\"]*)\"$")
-    public void admFiltraDevClicoPesquisar(String textName) throws Throwable {
-    	fail("");
-    }
-    
-    @Then("^a lista de usuarios e atualizada, contendo Joao e nao contendo Pedro$")
+    @Then("^a lista de usuarios e atualizada, contendo Airi Satou e nao contendo Ashton Cox$")
     public void admFiltraDevListaAtt() throws Throwable {
-    	fail("");
+    	List<WebElement> rows =  driver.findElements(By.cssSelector("table#example>tbody>tr"));
+    	for (WebElement webElement : rows) {
+    		List <WebElement> td = webElement.findElements(By.cssSelector("td"));
+    		String name = td.get(0).getText();
+    		if (name2 == name)
+    			fail("");
+    		Assert.assertEquals(name1, name);
+		}
     }
 }
