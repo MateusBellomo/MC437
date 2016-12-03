@@ -29,8 +29,6 @@ public class Adm_filtra_devsScenario {
 
     @Before
     public void setUp() throws IOException{
-    	//File classpathRoot = new File(System.getProperty("user.dir"));
-    	//File chromedriver = new File(classpathRoot, "driver/chromedriver");
     	System.setProperty("webdriver.chrome.driver", "driver/chromedriver");
     	driver = new ChromeDriver();
     }
@@ -48,7 +46,7 @@ public class Adm_filtra_devsScenario {
     
     @Given("^a pagina de listagem de desenvolvedores esta aberta$")
     public void admFiltraDevPaginaAberta() throws Throwable {
-    	driver.get("file:///home/cc2013/ra148131/workspace/MC437/SADE-Backend/WebContent/WEB-INF/Admin.html");
+    	driver.get("file:///home/cc2013/ra148131/workspace/MC437/SADE/WebContent/Admin.html");
     }
     
     @When("^eu edito as informações do filtro com detalhes pertencentes a Airi Satou e nao a Ashton Cox$")
@@ -63,7 +61,7 @@ public class Adm_filtra_devsScenario {
     	for (WebElement webElement : rows) {
     		List <WebElement> td = webElement.findElements(By.cssSelector("td"));
     		String name = td.get(0).getText();
-    		if (name2 == name)
+    		if (name2.equals(name))
     			fail("");
     		Assert.assertEquals(name1, name);
 		}
