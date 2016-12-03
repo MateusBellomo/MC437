@@ -64,9 +64,12 @@ public class Adm_lista_devsScenario {
   		Pattern r = Pattern.compile(pattern);
   	  
   		Matcher m = r.matcher(input);
-  		int devsGotInHtml = Integer.parseInt(m.group(1));
-  	  
-  		Assert.assertEquals(numberOfDevsDB, devsGotInHtml);
+  		if(m.find()){
+  			int devsGotInHtml = Integer.parseInt(m.group(1));
+  			Assert.assertEquals(numberOfDevsDB, devsGotInHtml);
+  		} else{
+  			System.out.println("MATCH NOT FOUND");
+  		}
   	}
   	
 }
