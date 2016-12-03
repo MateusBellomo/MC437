@@ -15,9 +15,12 @@ public class Desenvolvedor {
 	@Column(name="id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	
+
 	@Column(name="nome")
 	private String nome;
+
+	@Column(name="email")
+	private String email;
 	
 	@Column(name="rg")
 	String rg;
@@ -96,6 +99,18 @@ public class Desenvolvedor {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 
