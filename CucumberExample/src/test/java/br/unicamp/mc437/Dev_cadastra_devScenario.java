@@ -42,7 +42,7 @@ public class Dev_cadastra_devScenario {
     
     @Given("^Estou na pagina de cadastrar dev$")
     public void abrirPaginaCadastroDev() throws Throwable {
-    	driver.get("file:///home/cc2013/ra148131/workspace/MC437/SADE/WebContent/Dev.html");
+    	driver.get("http://localhost:8080/SADE/Dev.html");
     }
 
     @Given("^Nenhum usuario esta cadastrado$")

@@ -35,7 +35,7 @@ public class Adm_lista_devsScenario {
     	System.setProperty("webdriver.chrome.driver", "driver/chromedriver");
 
     	driver = new ChromeDriver();
-    	driver.get("file:///home/ec2013/ra147338/git/MC437/SADE-Backend/WebContent/WEB-INF/Admin.html");
+    	driver.get("http://localhost:8080/SADE/Admin.html");
     }
 
     @After
