@@ -395,6 +395,7 @@
 						$("#submit").button('reset');
 						$("#modalSucesso").modal("show");
 					} else {
+						$("#submit").button('reset');
 						$("#mensagemErro").text(data.responseText);
 						$("#modalFalha").modal("show");
 					}
@@ -407,6 +408,7 @@
 		$('#modalSucesso').on('hidden.bs.modal', function () {
 			location.reload();
 		});
+
 	</script>
 
 </body>
