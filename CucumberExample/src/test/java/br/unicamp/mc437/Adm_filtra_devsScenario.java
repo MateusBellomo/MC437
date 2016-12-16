@@ -46,7 +46,7 @@ public class Adm_filtra_devsScenario {
     
     @Given("^a pagina de listagem de desenvolvedores esta aberta$")
     public void admFiltraDevPaginaAberta() throws Throwable {
-    	driver.get("file:///home/cc2013/ra148131/workspace/MC437/SADE/WebContent/Admin.html");
+    	driver.get("http://localhost:8080/SADE/Admin.html");
     }
     
     @When("^eu edito as informações do filtro com detalhes pertencentes a Airi Satou e nao a Ashton Cox$")
