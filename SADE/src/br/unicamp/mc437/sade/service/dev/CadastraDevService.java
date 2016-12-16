@@ -23,80 +23,80 @@ import br.unicamp.mc437.sade.util.HibernateUtil;
 @WebServlet("/service/dev/cadastraDevService")
 public class CadastraDevService extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public CadastraDevService() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		try{
+	public CadastraDevService() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
-			GenericService<Desenvolvedor> devService = new GenericServiceImpl<Desenvolvedor>(
-					Desenvolvedor.class, HibernateUtil.getSessionFactory());
-			
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		try {
+
+			GenericService<Desenvolvedor> devService = new GenericServiceImpl<Desenvolvedor>(Desenvolvedor.class,
+					HibernateUtil.getSessionFactory());
+
 			Gson gson = new Gson();
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");
 			PrintWriter writer = response.getWriter();
 			Desenvolvedor dev = null;
-			
-			//VALIDACOES
+
+			// VALIDACOES
 			String errorMsg = "";
 			try {
 				dev = gson.fromJson(request.getParameter("json"), Desenvolvedor.class);
-			} catch (JsonSyntaxException e){
+			} catch (JsonSyntaxException e) {
 				errorMsg += "Campos de Horas Graduação, Disponível e Estágio são Obrigatórios";
 			}
-			if(dev != null) {
-				if(dev.getNome()==null||dev.getNome().equals("")){
+			if (dev != null) {
+				if (dev.getNome() == null || dev.getNome().equals("")) {
 					errorMsg += "Campo Nome do Desenvolvedor é Obrigatório\n";
 				}
-				if(dev.getRg()==null||dev.getRg().equals("")){
+				if (dev.getRg() == null || dev.getRg().equals("")) {
 					errorMsg += "Campo RG do Desenvolvedor é Obrigatório\n";
 				}
-				if(dev.getEmail()==null||dev.getEmail().equals("")){
+				if (dev.getEmail() == null || dev.getEmail().equals("")) {
 					errorMsg += "Campo Email do Desenvolvedor é Obrigatório\n";
 				}
-				for(Desenvolvedor devTemp : devService.getAll()){
-					if(dev.getRg().equals(devTemp.getRg()))
+				for (Desenvolvedor devTemp : devService.getAll()) {
+					if (dev.getRg().equals(devTemp.getRg()))
 						errorMsg += "RG Já Utilizado!";
-					if(dev.getEmail().equals(devTemp.getEmail()))
+					if (dev.getEmail().equals(devTemp.getEmail()))
 						errorMsg += "Email Já Utilizado!";
 				}
-				if(dev.getTelCel()==null||dev.getTelCel().equals("")){
+				if (dev.getTelCel() == null || dev.getTelCel().equals("")) {
 					errorMsg += "Campo Celular do Desenvolvedor é Obrigatório\n";
 				}
-				if(dev.getEndereco()==null||dev.getEndereco().equals("")){
+				if (dev.getEndereco() == null || dev.getEndereco().equals("")) {
 					errorMsg += "Campo Endereço do Desenvolvedor é Obrigatório\n";
 				}
-				if(dev.gethGrad()==null||dev.gethGrad().equals("")){
+				if (dev.gethGrad() == null || dev.gethGrad().equals("")) {
 					errorMsg += "Campo Horas Graduação é Obrigatório\n";
 				}
-				if(dev.gethDisp()==null||dev.gethDisp().equals("")){
+				if (dev.gethDisp() == null || dev.gethDisp().equals("")) {
 					errorMsg += "Campo Horas Disponível é Obrigatório\n";
 				}
-				if(dev.gethEstag()==null||dev.gethEstag().equals("")){
+				if (dev.gethEstag() == null || dev.gethEstag().equals("")) {
 					errorMsg += "Campo Horas Estágio é Obrigatório\n";
 				}
 			}
-			
-			
-			
-			if(errorMsg.length()>0){
+
+			if (errorMsg.length() > 0) {
 				throw new Exception(errorMsg);
 			}
-			
+
 			response.setStatus(HttpServletResponse.SC_OK);
 			writer.append("Desenvolvedor Cadastrado com Sucesso");
 			devService.save(dev);
-			
+
 		} catch (Exception e) {
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");

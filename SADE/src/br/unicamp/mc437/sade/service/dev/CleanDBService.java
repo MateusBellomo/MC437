@@ -18,23 +18,25 @@ import br.unicamp.mc437.sade.util.HibernateUtil;
 @WebServlet("/service/dev/cleanDB")
 public class CleanDBService extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public CleanDBService() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		GenericService<Desenvolvedor> devService = new GenericServiceImpl<Desenvolvedor>(
-				Desenvolvedor.class, HibernateUtil.getSessionFactory());
+	public CleanDBService() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		GenericService<Desenvolvedor> devService = new GenericServiceImpl<Desenvolvedor>(Desenvolvedor.class,
+				HibernateUtil.getSessionFactory());
 		devService.deleteAll();
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.getWriter().append("DataBase deleted successfully at: ").append(request.getContextPath());
 	}
 
 }
