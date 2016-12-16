@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
 
 import br.unicamp.mc437.sade.dataService.GenericService;
 import br.unicamp.mc437.sade.dataService.GenericServiceImpl;
@@ -41,19 +42,60 @@ public class CadastraDevService extends HttpServlet {
 					Desenvolvedor.class, HibernateUtil.getSessionFactory());
 			
 			Gson gson = new Gson();
-			Desenvolvedor dev = gson.fromJson(request.getParameter("json"), Desenvolvedor.class);
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");
 			PrintWriter writer = response.getWriter();
-			writer.append("{ status: “ok” }");
+			Desenvolvedor dev = null;
 			
+			//VALIDACOES
+			String errorMsg = "";
+			try {
+				dev = gson.fromJson(request.getParameter("json"), Desenvolvedor.class);
+			} catch (JsonSyntaxException e){
+				errorMsg += "Campos de Horas Graduação, Disponível e Estágio são Obrigatórios";
+			}
+			if(dev != null) {
+				if(dev.getNome()==null||dev.getNome().equals("")){
+					errorMsg += "Campo Nome do Desenvolvedor é Obrigatório\n";
+				}
+				if(dev.getRg()==null||dev.getRg().equals("")){
+					errorMsg += "Campo RG do Desenvolvedor é Obrigatório\n";
+				}
+				if(dev.getEmail()==null||dev.getEmail().equals("")){
+					errorMsg += "Campo Email do Desenvolvedor é Obrigatório\n";
+				}
+				if(dev.getTelCel()==null||dev.getTelCel().equals("")){
+					errorMsg += "Campo Celular do Desenvolvedor é Obrigatório\n";
+				}
+				if(dev.getEndereco()==null||dev.getEndereco().equals("")){
+					errorMsg += "Campo Endereço do Desenvolvedor é Obrigatório\n";
+				}
+				if(dev.gethGrad()==null||dev.gethGrad().equals("")){
+					errorMsg += "Campo Horas Graduação é Obrigatório\n";
+				}
+				if(dev.gethDisp()==null||dev.gethDisp().equals("")){
+					errorMsg += "Campo Horas Disponível é Obrigatório\n";
+				}
+				if(dev.gethEstag()==null||dev.gethEstag().equals("")){
+					errorMsg += "Campo Horas Estágio é Obrigatório\n";
+				}
+			}
+			
+			
+			
+			if(errorMsg.length()>0){
+				throw new Exception(errorMsg);
+			}
+			
+			response.setStatus(HttpServletResponse.SC_OK);
+			writer.append("Desenvolvedor Cadastrado com Sucesso");
 			devService.save(dev);
-			
 			
 		} catch (Exception e) {
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");
-			response.getWriter().append("{ status: “fail”, message:"+e.getMessage()+" }");
+			response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+			response.getWriter().append(e.getMessage());
 		}
 	}
 

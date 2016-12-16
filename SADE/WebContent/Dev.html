@@ -374,8 +374,10 @@
 				type : 'post',
 				datatype : 'json',
 				complete : function(data) {
-					$("#submit").button('reset');
-					$("#modalSucesso").modal("show");
+					if(data.status==200){
+						$("#submit").button('reset');
+						$("#modalSucesso").modal("show");
+					} else alert(data.responseText);
 				},
 				data : {
 					json : JSON.stringify(dataObj)
