@@ -284,6 +284,23 @@
 			    </div><!-- /.modal-content -->
 			  </div><!-- /.modal-dialog -->
 			</div><!-- /.modal -->
+			
+			<div class="modal fade" id="modalFalha">
+			  <div class="modal-dialog">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+			        <h4 class="modal-title">Falha ao salvar registro</h4>
+			      </div>
+			      <div class="modal-body">
+			        <p>Houve um erro ao salvar seu cadastro. <br/> Mensagem de erro: <span id="mensagemErro"></span></span>.</p>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+			      </div>
+			    </div><!-- /.modal-content -->
+			  </div><!-- /.modal-dialog -->
+			</div><!-- /.modal -->
 						
 		</div>
 	</div>
@@ -377,7 +394,10 @@
 					if(data.status==200){
 						$("#submit").button('reset');
 						$("#modalSucesso").modal("show");
-					} else alert(data.responseText);
+					} else {
+						$("#mensagemErro").text(data.responseText);
+						$("#modalFalha").modal("show");
+					}
 				},
 				data : {
 					json : JSON.stringify(dataObj)
