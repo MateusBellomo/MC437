@@ -91,7 +91,7 @@ public class Dev_cadastra_devScenario {
     	if (classe.contains("disabled"))
     		fail("");
     	
-    	//submit.click();
+    	submit.click();
     }
     
     @When("^Preencho os campos de registro com dados invalidos$")
@@ -126,17 +126,45 @@ public class Dev_cadastra_devScenario {
     }
     
     @Given("^existem usuarios cadastrados$")
-    public void populateUsuarios() throws Throwable {
-    	fail("");
+    public void populateUsuarios() throws Throwable {    	
     }
     
     @When("^tento cadastrar com dados conflitantes com usuarios cadastrados$")
     public void cadastroConflitante() throws Throwable {
-    	fail("");
+    	WebElement aux = driver.findElement(By.id("inputNome"));
+    	aux.sendKeys("dev123");  
+    	aux =  driver.findElement(By.id("inputRG"));
+    	aux.sendKeys("999999999");    	
+    	aux = driver.findElement(By.id("inputTelRes"));
+    	aux.sendKeys("(99)99896999");  
+    	aux = driver.findElement(By.id("inputEmail"));
+    	aux.sendKeys("voce@email.com");  
+    	aux = driver.findElement(By.id("inputCel"));
+    	aux.sendKeys("(99)998969999"); 
+    	aux = driver.findElement(By.id("inputEnd"));
+    	aux.sendKeys("Rua Abc 233"); 
+    	aux = driver.findElement(By.id("inputInst"));
+    	aux.sendKeys("Unicamp"); 
+    	aux = driver.findElement(By.id("inputCurso"));
+    	aux.sendKeys("Ciência da Computação"); 
+    	aux = driver.findElement(By.id("inputHorasGrad"));
+    	aux.sendKeys("9"); 
+    	aux = driver.findElement(By.id("inputHorasDisp"));
+    	aux.sendKeys("1"); 
+    	aux = driver.findElement(By.id("inputHorasEst"));
+    	aux.sendKeys("5");
+    	
+    	WebElement submit = driver.findElement(By.id("submit"));
+    	String classe = submit.getAttribute("class");    	
+    	if (classe.contains("disabled"))
+    		fail("");
+    	submit.click();
     }
     
     @Then("^Sou informado dos dados conflitantes$")
     public void informaConflito() throws Throwable {
-    	fail("");
+    	List<WebElement> rows = driver.findElements(By.id("btnFecharModalFalha"));
+    	Assert.assertEquals(rows.size(), 1);
     }
+    
 }

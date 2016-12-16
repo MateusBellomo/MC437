@@ -18,10 +18,10 @@ Feature: dev cadastra dev
      When Preencho os campos de registro com dados invalidos 
      Then Nao devo conseguir cadastrar
      
-  Scenario: falha no cadastro por conflito com os outros usuarios
-     Given existem usuarios cadastrados
-     When tento cadastrar com dados conflitantes com usuarios cadastrados
-     Then Sou informado dos dados conflitantes 
+ Scenario: falha no cadastro por conflito com os outros usuarios
+    Given existem usuarios cadastrados
+    When tento cadastrar com dados conflitantes com usuarios cadastrados
+    Then Sou informado dos dados conflitantes 
       
   
      

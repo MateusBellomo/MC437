@@ -42,6 +42,68 @@ public class Adm_filtra_devsScenario {
     public void admFiltraDevTemDevs(String name1, String name2) throws Throwable {
     	this.name1 = name1;
     	this.name2 = name2;
+    	driver.get("http://localhost:8080/SADE/service/dev/cleanDB");
+    	
+    	driver.get("http://localhost:8080/SADE/Dev.html");
+    	WebElement aux = driver.findElement(By.id("inputNome"));
+    	aux.sendKeys(name1);  
+    	aux =  driver.findElement(By.id("inputRG"));
+    	aux.sendKeys("999999999");    	
+    	aux = driver.findElement(By.id("inputTelRes"));
+    	aux.sendKeys("(99)99896999");  
+    	aux = driver.findElement(By.id("inputEmail"));
+    	aux.sendKeys("name1@email.com");  
+    	aux = driver.findElement(By.id("inputCel"));
+    	aux.sendKeys("(99)998969999"); 
+    	aux = driver.findElement(By.id("inputEnd"));
+    	aux.sendKeys("Rua Abc 233"); 
+    	aux = driver.findElement(By.id("inputInst"));
+    	aux.sendKeys("Unicamp"); 
+    	aux = driver.findElement(By.id("inputCurso"));
+    	aux.sendKeys("Ciência da Computação"); 
+    	aux = driver.findElement(By.id("inputHorasGrad"));
+    	aux.sendKeys("9"); 
+    	aux = driver.findElement(By.id("inputHorasDisp"));
+    	aux.sendKeys("1"); 
+    	aux = driver.findElement(By.id("inputHorasEst"));
+    	aux.sendKeys("5");
+    	
+    	aux = driver.findElement(By.id("submit"));
+    	String classe = aux.getAttribute("class");    	
+    	if (classe.contains("disabled"))
+    		fail("");
+    	aux.click();
+    	
+    	driver.get("http://localhost:8080/SADE/Dev.html");
+    	aux = driver.findElement(By.id("inputNome"));
+    	aux.sendKeys(name2);  
+    	aux =  driver.findElement(By.id("inputRG"));
+    	aux.sendKeys("999999998");    	
+    	aux = driver.findElement(By.id("inputTelRes"));
+    	aux.sendKeys("(99)99896999");  
+    	aux = driver.findElement(By.id("inputEmail"));
+    	aux.sendKeys("name2@email.com");  
+    	aux = driver.findElement(By.id("inputCel"));
+    	aux.sendKeys("(99)998969999"); 
+    	aux = driver.findElement(By.id("inputEnd"));
+    	aux.sendKeys("Rua Abc 233"); 
+    	aux = driver.findElement(By.id("inputInst"));
+    	aux.sendKeys("Unicamp"); 
+    	aux = driver.findElement(By.id("inputCurso"));
+    	aux.sendKeys("Ciência da Computação"); 
+    	aux = driver.findElement(By.id("inputHorasGrad"));
+    	aux.sendKeys("9"); 
+    	aux = driver.findElement(By.id("inputHorasDisp"));
+    	aux.sendKeys("1"); 
+    	aux = driver.findElement(By.id("inputHorasEst"));
+    	aux.sendKeys("5");
+    	
+    	aux = driver.findElement(By.id("submit"));
+    	classe = aux.getAttribute("class");    	
+    	if (classe.contains("disabled"))
+    		fail("");
+    	aux.click();
+    	
     }
     
     @Given("^a pagina de listagem de desenvolvedores esta aberta$")
