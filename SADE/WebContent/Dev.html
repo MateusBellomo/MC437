@@ -21,6 +21,9 @@
 <!-- Bootstrap-slider -->
 <link href="css/bootstrap-slider.css" rel="stylesheet">
 
+<!-- Spinner -->
+<!--<link href="css/font-awesome.css" rel="stylesheet"> -->
+
 </head>
 
 <body>
@@ -260,11 +263,28 @@
 					<div class="form-group">
 						<div class="col-lg-10 col-lg-offset-2">
 							<button id="reset" type="reset" class="btn btn-default">Cancelar</button>
-							<button id="submit" type="submit" class="btn btn-primary">Salvar</button>
+							<button id="submit" type="submit" class="btn btn-primary" data-loading-text="<span class='fa fa-spinner fa-spin'></span>Salvando">Salvar</button>
 						</div>
 					</div>
 				</fieldset>
 			</form>
+			<div class="modal fade" id="modalSucesso">
+			  <div class="modal-dialog">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+			        <h4 class="modal-title">Salvo com sucesso</h4>
+			      </div>
+			      <div class="modal-body">
+			        <p>O seu cadastro foi feito com sucesso. Por favor aguarde o contato da nossa equipe para agendar uma entrevista.</p>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+			      </div>
+			    </div><!-- /.modal-content -->
+			  </div><!-- /.modal-dialog -->
+			</div><!-- /.modal -->
+						
 		</div>
 	</div>
 	<!-- /container -->
@@ -317,6 +337,12 @@
 
 		$("form").on("submit", function(event) {
 			event.preventDefault();
+			
+			if ($("form").validator("validate").has('.has-error').length) {
+				return;
+			}
+			
+			$("#submit").button('loading');
 
 			var dataObj = {
 				nome : $("#inputNome").val(),
@@ -347,12 +373,14 @@
 				url : '/SADE/service/dev/cadastraDevService',
 				type : 'post',
 				datatype : 'json',
-				success : function(data) {
-				},
-				data : {
-					json : JSON.stringify(dataObj)
+				complete : function(data) {
+					$("#submit").button('reset');
+					$("#modalSucesso").modal("show");
 				}
 			});
+		});
+		$('#modalSucesso').on('hidden.bs.modal', function () {
+			location.reload();
 		});
 	</script>
 
