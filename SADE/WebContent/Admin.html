@@ -90,9 +90,27 @@
    	<script src="js/jquery.dataTables.min.js"></script>
     <script src="js/dataTables.bootstrap.min.js"></script>	
     <script>
+
+
+    	function escapeHtml(unsafe) {
+        	return unsafe
+             .replace(/&/g, "&amp;")
+             .replace(/</g, "&lt;")
+             .replace(/>/g, "&gt;")
+             .replace(/"/g, "&quot;")
+             .replace(/'/g, "&#039;");
+        }
+
+
       $(document).ready(function() {
         $('#example').DataTable( {
-          "ajax": '/SADE/service/adm/listaDevs'
+          "ajax": '/SADE/service/adm/listaDevs',
+          "aoColumnDefs": [ {
+              "aTargets": [ 0 ],
+              "mRender": function ( data, type, full ) {
+                return escapeHtml(data);
+              }
+            } ]
         } );
       } );
     </script>
