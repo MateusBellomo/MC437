@@ -64,6 +64,12 @@ public class CadastraDevService extends HttpServlet {
 				if(dev.getEmail()==null||dev.getEmail().equals("")){
 					errorMsg += "Campo Email do Desenvolvedor é Obrigatório\n";
 				}
+				for(Desenvolvedor devTemp : devService.getAll()){
+					if(dev.getRg().equals(devTemp.getRg()))
+						errorMsg += "RG Já Utilizado!";
+					if(dev.getEmail().equals(devTemp.getEmail()))
+						errorMsg += "Email Já Utilizado!";
+				}
 				if(dev.getTelCel()==null||dev.getTelCel().equals("")){
 					errorMsg += "Campo Celular do Desenvolvedor é Obrigatório\n";
 				}
