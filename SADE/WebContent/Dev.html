@@ -1,337 +1,360 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+<head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="http://getbootstrap.com/favicon.ico">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="icon" href="http://getbootstrap.com/favicon.ico">
 
-    <title>SADE - Sistema de Acompanhamento de Desenvolvedores Externos</title>
+<title>SADE - Sistema de Acompanhamento de Desenvolvedores
+	Externos</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
+<!-- Bootstrap core CSS -->
+<link href="css/bootstrap.css" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <link href="css/theme.css" rel="stylesheet">
-    
-    <!-- Bootstrap-slider -->
-    <link href="css/bootstrap-slider.css" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link href="css/theme.css" rel="stylesheet">
 
-  </head>
+<!-- Bootstrap-slider -->
+<link href="css/bootstrap-slider.css" rel="stylesheet">
 
-  <body>
+</head>
 
-    <!-- Fixed navbar -->
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#">SADE</a>
-        </div>
+<body>
 
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Desenvolvedor</a></li>
-            <li><a href="Admin.html">Administrador</a></li>
-            <li><a href="#contato">Contato</a></li>
-          </ul>
+	<!-- Fixed navbar -->
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">SADE</a>
+			</div>
 
-      </div>
-    </nav>
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="#">Desenvolvedor</a></li>
+				<li><a href="Admin.html">Administrador</a></li>
+				<li><a href="#contato">Contato</a></li>
+			</ul>
 
-    <div class="container theme-showcase" role="main">
-      <div class="page-header">
-        <h1>Informações Pessoais</h1>
-      </div>
-      <div class="well">
-        <form class="form-horizontal" data-toggle="validator" role="form">
-          <fieldset>
+		</div>
+	</nav>
+	<div class="container theme-showcase" role="main">
+		<div class="page-header">
+			<h1>Informações Pessoais</h1>
+		</div>
+		<div class="well">
+			<form class="form-horizontal" data-toggle="validator" role="form">
+				<fieldset>
+					<div class="row">
+						<div class="form-group col-lg-6">
+							<label for="inputNome" class="col-lg-4 control-label">Nome</label>
+							<div class="col-lg-8">
+								<input class="form-control" id="inputNome" name="nome"
+									placeholder="Nome" type="text" maxlength="30" required>
+							</div>
+						</div>
+						<div class="form-group col-lg-6">
+							<label for="inputRG" class="col-lg-4 control-label">RG</label>
+							<div class="col-lg-3">
+								<input class="form-control" id="inputRG" name="rg"
+									placeholder="999999999" type="text" maxlength="12"
+									data-error="999999999" pattern="[0-9]{9}" required>
+								<div class="help-block with-errors"></div>
+							</div>
+						</div>
+					</div>
 
-            <div class="form-group">
-              <label for="inputNome" class="col-lg-2 control-label">Nome</label>
-              <div class="col-lg-10">
-                <input class="form-control" id="inputNome" name="nome" placeholder="Nome" type="text" maxlength="30" required>
-              </div>
-            </div>   
-             <div class="form-group">
-              <label for="inputEmail" class="col-lg-2 control-label">Email</label>
-              <div class="col-lg-10">
-                <input class="form-control" id="inputEmail" name="email" placeholder="voce@email.com" type="text" maxlength="30" required>
-              </div>
-            </div>             
-            <div class="form-group">
-              <label for="inputRG" class="col-lg-2 control-label">RG</label>
-              <div class="col-lg-2">
-                <input class="form-control" id="inputRG" name="rg" placeholder="999999999" type="text" maxlength="12"  data-error="999999999" pattern="[0-9]{9}" required>
-                <div class="help-block with-errors"></div>
-                </div>
-            </div>
-            <div class="form-group">
-              <label for="inputTelRes" class="col-lg-2 control-label">Telefone Residencial</label>
-              <div class="col-lg-2">
-                <input class="form-control" id="inputTelRes" name="tel-res" placeholder="(99)99999999" type="text" maxlength="13" data-error="(99)99999999" pattern="\([0-9]{2}\)[0-9]{8}">
-                <div class="help-block with-errors"></div>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="inputCel" class="col-lg-2 control-label">Celular</label>
-              <div class="col-lg-2">
-                <input class="form-control" id="inputCel" name="tel-cel" placeholder="(99)999999999" type="text" maxlength="14" data-error="(99)999999999" pattern="\([0-9]{2}\)[0-9]{9}" required>
-                <div class="help-block with-errors"></div>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="inputEnd" class="col-lg-2 control-label">Endereço</label>
-              <div class="col-lg-10">
-                <input class="form-control" id="inputEnd" name="endereco" placeholder="Endereço Atual" type="text" maxlength="50" required>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="inputInst" class="col-lg-2 control-label">Instituição de Ensino</label>
-              <div class="col-lg-10">
-                <input class="form-control" id="inputInst" name="instituicao" placeholder="Instituição" type="text" maxlength="50">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="inputCurso" class="col-lg-2 control-label">Curso</label>
-              <div class="col-lg-10">
-                <input class="form-control" id="inputCurso" name="curso" placeholder="Ciência da Computação" type="text" maxlength="30" >
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="inputHorasGrad" class="col-lg-2 control-label">Horas Graduação</label>
-              <div class="col-lg-2">
-                <input class="form-control" id="inputHorasGrad" name="h-grad" placeholder="0" maxlength="2" type="number" min="0" max="40" required>
-                <span class="help-block">Horas/Semana</span>
-              </div>
-            </div> 
-            <div class="form-group">
-              <label for="inputHorasDisp" class="col-lg-2 control-label">Horas Disponível</label>
-              <div class="col-lg-2">
-                <input class="form-control" id="inputHorasDisp" name="h-disp" placeholder="0" maxlength="2" type="number" min="0" max="40" required>
-                <span class="help-block">Horas/Semana</span>
-              </div>
-            </div> 
-            <div class="form-group">
-              <label for="inputHorasEst" class="col-lg-2 control-label">Horas Estágio</label>
-              <div class="col-lg-2">
-                <input class="form-control" id="inputHorasEst" name="h-estag" placeholder="0"  maxlength="2" type="number" min="0" max="40" required>
-                <span class="help-block">Horas/Semana</span>
-              </div>
-            </div>            
-            
-            <div class="form-group">
-              <label for="inputCurriculo" class="col-lg-2 control-label">Link para Currículo</label>
-              <div class="col-lg-10">
-                <input class="form-control" id="inputCurriculo" name="curriculo" placeholder="https://www.linkedin.com" type="text" maxlength="30">
-              </div>
-            </div>
-                        
-            <div class="form-group">
-              <label for="taObsrvacoes" class="col-lg-2 control-label">Observações</label>
-              <div class="col-lg-10">
-                <textarea class="form-control" rows="3" id="taObservacoes" name="observacoes" placeholder="Escreva aqui informações sobre sites já feitos, links ou comentários." maxlength="255"></textarea>
-              </div>
-            </div>
-            
-            <div class="form-group">
-              <label for="inputConheceu" class="col-lg-2 control-label">Como conheceu a Conpec</label>
-              <div class="col-lg-10">
-                <input class="form-control" id="inputConheceu" name="conheceu" type="text" maxlength="30">
-              </div>
-            </div>
-            
-      <div class="page-header">
-        <h3>Conhecimentos</h3>
-      </div>
-            
-            <div class="form-group">
-              <label for="sliderJava" class="col-lg-2 control-label">Java</label>
-              <div class="col-lg-10">
-                <input id="sliderJava" name="java" type="text"
-                  data-provide="slider"
-                  data-slider-ticks="[1, 2, 3, 4]"
-                  data-slider-ticks-labels='["Nada", "Iniciante", "Intermediário", "Avançado"]'
-                  data-slider-min="1"
-                  data-slider-max="4"
-                  data-slider-step="1"
-                  data-slider-value="1"
-                  data-slider-tooltip="hide" 
-                  style="width:300px"/>
-              </div>
-              <label for="sliderPhp" class="col-lg-2 control-label">PHP</label>
-              <div class="col-lg-10">
-                <input id="sliderPhp" name="php" type="text"
-                  data-provide="slider"
-                  data-slider-ticks="[1, 2, 3, 4]"
-                  data-slider-ticks-labels='["Nada", "Iniciante", "Intermediário", "Avançado"]'
-                  data-slider-min="1"
-                  data-slider-max="4"
-                  data-slider-step="1"
-                  data-slider-value="1"
-                  data-slider-tooltip="hide" 
-                  style="width:300px"/>
-              </div>
-              <label for="sliderMysql" class="col-lg-2 control-label">MySql</label>
-              <div class="col-lg-10">
-                <input id="sliderMysql" name="mysql" type="text"
-                  data-provide="slider"
-                  data-slider-ticks="[1, 2, 3, 4]"
-                  data-slider-ticks-labels='["Nada", "Iniciante", "Intermediário", "Avançado"]'
-                  data-slider-min="1"
-                  data-slider-max="4"
-                  data-slider-step="1"
-                  data-slider-value="1"
-                  data-slider-tooltip="hide" 
-                  style="width:300px"/>
-              </div>
-              <label for="sliderAjax" class="col-lg-2 control-label">Ajax</label>
-              <div class="col-lg-10">
-                <input id="sliderAjax" name="ajax" type="text"
-                  data-provide="slider"
-                  data-slider-ticks="[1, 2, 3, 4]"
-                  data-slider-ticks-labels='["Nada", "Iniciante", "Intermediário", "Avançado"]'
-                  data-slider-min="1"
-                  data-slider-max="4"
-                  data-slider-step="1"
-                  data-slider-value="1"
-                  data-slider-tooltip="hide" 
-                  style="width:300px"/>
-              </div>
-              <label for="sliderJavascript" class="col-lg-2 control-label">Javascript</label>
-              <div class="col-lg-10">
-                <input id="sliderJavascript" name="javascript" type="text"
-                  data-provide="slider"
-                  data-slider-ticks="[1, 2, 3, 4]"
-                  data-slider-ticks-labels='["Nada", "Iniciante", "Intermediário", "Avançado"]'
-                  data-slider-min="1"
-                  data-slider-max="4"
-                  data-slider-step="1"
-                  data-slider-value="1"
-                  data-slider-tooltip="hide" 
-                  style="width:300px"/>
-              </div>
-              <label for="sliderPython" class="col-lg-2 control-label">Python</label>
-              <div class="col-lg-10">
-                <input id="sliderPython" name="python" type="text"
-                  data-provide="slider"
-                  data-slider-ticks="[1, 2, 3, 4]"
-                  data-slider-ticks-labels='["Nada", "Iniciante", "Intermediário", "Avançado"]'
-                  data-slider-min="1"
-                  data-slider-max="4"
-                  data-slider-step="1"
-                  data-slider-value="1"
-                  data-slider-tooltip="hide" 
-                  style="width:300px"/>
-              </div>
-              <label for="sliderCs" class="col-lg-2 control-label">C#</label>
-              <div class="col-lg-10">
-                <input id="sliderCs" name="cs" type="text"
-                  data-provide="slider"
-                  data-slider-ticks="[1, 2, 3, 4]"
-                  data-slider-ticks-labels='["Nada", "Iniciante", "Intermediário", "Avançado"]'
-                  data-slider-min="1"
-                  data-slider-max="4"
-                  data-slider-step="1"
-                  data-slider-value="1"
-                  data-slider-tooltip="hide" 
-                  style="width:300px"/>
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="col-lg-10 col-lg-offset-2">
-                <button id="reset" type="reset" class="btn btn-default">Cancelar</button>
-                <button id="submit" type="submit" class="btn btn-primary">Salvar</button>
-              </div>
-            </div>
-          </fieldset>
-        </form>
-      </div>
-    </div> <!-- /container -->
+					<div class="row">
+						<div class="form-group">
+							<label for="inputEmail" class="col-lg-2 control-label">Email</label>
+							<div class="col-lg-10">
+								<input class="form-control" id="inputEmail" name="email"
+									placeholder="voce@email.com" type="text" maxlength="30"
+									pattern=".+@.+" required>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="form-group col-lg-6">
+							<label for="inputTelRes" class="col-lg-4 control-label">Telefone
+								Residencial</label>
+							<div class="col-lg-4">
+								<input class="form-control" id="inputTelRes" name="tel-res"
+									placeholder="(99)99999999" type="text" maxlength="13"
+									data-error="(99)99999999" pattern="\([0-9]{2}\)[0-9]{8}">
+								<div class="help-block with-errors"></div>
+							</div>
+						</div>
+						<div class="form-group col-lg-6">
+							<label for="inputCel" class="col-lg-4 control-label">Celular</label>
+							<div class="col-lg-4">
+								<input class="form-control" id="inputCel" name="tel-cel"
+									placeholder="(99)999999999" type="text" maxlength="14"
+									data-error="(99)999999999" pattern="\([0-9]{2}\)[0-9]{9}"
+									required>
+								<div class="help-block with-errors"></div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="form-group">
+							<label for="inputEnd" class="col-lg-2 control-label">Endereço</label>
+							<div class="col-lg-10">
+								<input class="form-control" id="inputEnd" name="endereco"
+									placeholder="Endereço Atual" type="text" maxlength="50"
+									required>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-lg-6">
+							<label for="inputInst" class="col-lg-4 control-label">Instituição
+								de Ensino</label>
+							<div class="col-lg-8">
+								<input class="form-control" id="inputInst" name="instituicao"
+									placeholder="Instituição" type="text" maxlength="50">
+							</div>
+						</div>
+						<div class="form-group col-lg-6">
+							<label for="inputCurso" class="col-lg-4 control-label">Curso</label>
+							<div class="col-lg-8">
+								<input class="form-control" id="inputCurso" name="curso"
+									placeholder="Ciência da Computação" type="text" maxlength="30">
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-lg-4">
+							<label for="inputHorasGrad" class="col-lg-6 control-label">Horas
+								Graduação</label>
+							<div class="col-lg-3">
+								<input class="form-control" id="inputHorasGrad" name="h-grad"
+									placeholder="0" maxlength="2" type="number" min="0" max="40"
+									required> <span class="help-block">Horas/Semana</span>
+							</div>
+						</div>
+						<div class="form-group col-lg-4">
+							<label for="inputHorasDisp" class="col-lg-6 control-label">Horas
+								Disponível</label>
+							<div class="col-lg-3">
+								<input class="form-control" id="inputHorasDisp" name="h-disp"
+									placeholder="0" maxlength="2" type="number" min="0" max="40"
+									required> <span class="help-block">Horas/Semana</span>
+							</div>
+						</div>
+						<div class="form-group col-lg-4">
+							<label for="inputHorasEst" class="col-lg-6 control-label">Horas
+								Estágio</label>
+							<div class="col-lg-3">
+								<input class="form-control" id="inputHorasEst" name="h-estag"
+									placeholder="0" maxlength="2" type="number" min="0" max="40"
+									required> <span class="help-block">Horas/Semana</span>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group">
+							<label for="inputCurriculo" class="col-lg-2 control-label">Link
+								para Currículo</label>
+							<div class="col-lg-10">
+								<input class="form-control" id="inputCurriculo" name="curriculo"
+									placeholder="https://www.linkedin.com" type="text"
+									maxlength="30">
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group">
+							<label for="taObsrvacoes" class="col-lg-2 control-label">Observações</label>
+							<div class="col-lg-10">
+								<textarea class="form-control" rows="3" id="taObservacoes"
+									name="observacoes"
+									placeholder="Escreva aqui informações sobre sites já feitos, links ou comentários."
+									maxlength="255"></textarea>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group">
+							<label for="inputConheceu" class="col-lg-2 control-label">Como
+								conheceu a Conpec</label>
+							<div class="col-lg-10">
+								<input class="form-control" id="inputConheceu" name="conheceu"
+									type="text" maxlength="30">
+							</div>
+						</div>
+					</div>
+					<div class="page-header">
+						<h3>Conhecimentos</h3>
+					</div>
+
+					<div class="form-group">
+						<label for="sliderJava" class="col-lg-2 control-label">Java</label>
+						<div class="col-lg-10">
+							<input id="sliderJava" name="java" type="text"
+								data-provide="slider" data-slider-ticks="[1, 2, 3, 4]"
+								data-slider-ticks-labels='["Nada", "Iniciante", "Intermediário", "Avançado"]'
+								data-slider-min="1" data-slider-max="4" data-slider-step="1"
+								data-slider-value="1" data-slider-tooltip="hide"
+								style="width: 300px" />
+						</div>
+						<label for="sliderPhp" class="col-lg-2 control-label">PHP</label>
+						<div class="col-lg-10">
+							<input id="sliderPhp" name="php" type="text"
+								data-provide="slider" data-slider-ticks="[1, 2, 3, 4]"
+								data-slider-ticks-labels='["Nada", "Iniciante", "Intermediário", "Avançado"]'
+								data-slider-min="1" data-slider-max="4" data-slider-step="1"
+								data-slider-value="1" data-slider-tooltip="hide"
+								style="width: 300px" />
+						</div>
+						<label for="sliderMysql" class="col-lg-2 control-label">MySql</label>
+						<div class="col-lg-10">
+							<input id="sliderMysql" name="mysql" type="text"
+								data-provide="slider" data-slider-ticks="[1, 2, 3, 4]"
+								data-slider-ticks-labels='["Nada", "Iniciante", "Intermediário", "Avançado"]'
+								data-slider-min="1" data-slider-max="4" data-slider-step="1"
+								data-slider-value="1" data-slider-tooltip="hide"
+								style="width: 300px" />
+						</div>
+						<label for="sliderAjax" class="col-lg-2 control-label">Ajax</label>
+						<div class="col-lg-10">
+							<input id="sliderAjax" name="ajax" type="text"
+								data-provide="slider" data-slider-ticks="[1, 2, 3, 4]"
+								data-slider-ticks-labels='["Nada", "Iniciante", "Intermediário", "Avançado"]'
+								data-slider-min="1" data-slider-max="4" data-slider-step="1"
+								data-slider-value="1" data-slider-tooltip="hide"
+								style="width: 300px" />
+						</div>
+						<label for="sliderJavascript" class="col-lg-2 control-label">Javascript</label>
+						<div class="col-lg-10">
+							<input id="sliderJavascript" name="javascript" type="text"
+								data-provide="slider" data-slider-ticks="[1, 2, 3, 4]"
+								data-slider-ticks-labels='["Nada", "Iniciante", "Intermediário", "Avançado"]'
+								data-slider-min="1" data-slider-max="4" data-slider-step="1"
+								data-slider-value="1" data-slider-tooltip="hide"
+								style="width: 300px" />
+						</div>
+						<label for="sliderPython" class="col-lg-2 control-label">Python</label>
+						<div class="col-lg-10">
+							<input id="sliderPython" name="python" type="text"
+								data-provide="slider" data-slider-ticks="[1, 2, 3, 4]"
+								data-slider-ticks-labels='["Nada", "Iniciante", "Intermediário", "Avançado"]'
+								data-slider-min="1" data-slider-max="4" data-slider-step="1"
+								data-slider-value="1" data-slider-tooltip="hide"
+								style="width: 300px" />
+						</div>
+						<label for="sliderCs" class="col-lg-2 control-label">C#</label>
+						<div class="col-lg-10">
+							<input id="sliderCs" name="cs" type="text" data-provide="slider"
+								data-slider-ticks="[1, 2, 3, 4]"
+								data-slider-ticks-labels='["Nada", "Iniciante", "Intermediário", "Avançado"]'
+								data-slider-min="1" data-slider-max="4" data-slider-step="1"
+								data-slider-value="1" data-slider-tooltip="hide"
+								style="width: 300px" />
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-lg-10 col-lg-offset-2">
+							<button id="reset" type="reset" class="btn btn-default">Cancelar</button>
+							<button id="submit" type="submit" class="btn btn-primary">Salvar</button>
+						</div>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+	</div>
+	<!-- /container -->
 
 
-    <!-- Bootstrap core JavaScript
+	<!-- Bootstrap core JavaScript
     ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.js"></script>
-    <script src="js/bootstrap-slider.js"></script>
-    <script src="js/validator.min.js"></script>
-    <script type="text/javascript" >
-    $('#sliderJava').slider({
-    	formatter: function(value) {
-    		return 'Current value: ' + value;
-    	}
-    });
-    $('#sliderPhp').slider({
-    	formatter: function(value) {
-    		return 'Current value: ' + value;
-    	}
-    });
-    $('#sliderMysql').slider({
-    	formatter: function(value) {
-    		return 'Current value: ' + value;
-    	}
-    });
-    $('#sliderAjax').slider({
-    	formatter: function(value) {
-    		return 'Current value: ' + value;
-    	}
-    });
-    $('#sliderJavascript').slider({
-    	formatter: function(value) {
-    		return 'Current value: ' + value;
-    	}
-    });
-    $('#sliderPython').slider({
-    	formatter: function(value) {
-    		return 'Current value: ' + value;
-    	}
-    });
-    $('#sliderCs').slider({
-    	formatter: function(value) {
-    		return 'Current value: ' + value;
-    	}
-    });
-    
-    $("form").on( "submit", function( event ) {
-      event.preventDefault();
-      
-      var dataObj = {
-        nome : $("#inputNome").val(),
-        email : $("#inputEmail").val(),
-        rg:$("#inputRG").val(),
-        telRes:$("#inputTelres").val(),
-        telCel:$("#inputCel").val(),
-        endereco:$("#inputEnd").val(),
-        instituicao:$("#inputInst").val(),
-        curso:$("#inputCurso").val(),
-        hGrad:$("#inputHorasGrad").val(),
-        hDisp:$("#inputHorasDisp").val(),
-        hEstag:$("#inputHorasEst").val(),
-        curriculo:$("#inputCurriculo").val(),
-        observacoes:$("#taObservacoes").val(),
-        conheceu:$("#inputConheceu").val(),
-        java:$("#sliderJava").val(),
-        php:$("#sliderPhp").val(),
-        mysql:$("#sliderMysql").val(),
-        ajax:$("#sliderAjax").val(),
-        javascript:$("#sliderJavascript").val(),
-        python:$("#sliderPython").val(),
-        csharp:$("#sliderCs").val()
-      };
-      
-      $.ajax({
-        cache: false,
-        url: '/SADE/service/dev/cadastraDevService',
-        type: 'post',
-        datatype: 'json',
-        success: function(data) {},
-        data: {json: JSON.stringify(dataObj)}
-      });
 
-    });
-    </script>
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="js/jquery.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<script src="js/bootstrap-slider.js"></script>
+	<script src="js/validator.min.js"></script>
+	<script type="text/javascript">
+		$('#sliderJava').slider({
+			formatter : function(value) {
+				return 'Current value: ' + value;
+			}
+		});
+		$('#sliderPhp').slider({
+			formatter : function(value) {
+				return 'Current value: ' + value;
+			}
+		});
+		$('#sliderMysql').slider({
+			formatter : function(value) {
+				return 'Current value: ' + value;
+			}
+		});
+		$('#sliderAjax').slider({
+			formatter : function(value) {
+				return 'Current value: ' + value;
+			}
+		});
+		$('#sliderJavascript').slider({
+			formatter : function(value) {
+				return 'Current value: ' + value;
+			}
+		});
+		$('#sliderPython').slider({
+			formatter : function(value) {
+				return 'Current value: ' + value;
+			}
+		});
+		$('#sliderCs').slider({
+			formatter : function(value) {
+				return 'Current value: ' + value;
+			}
+		});
 
-</body></html>
+		$("form").on("submit", function(event) {
+			event.preventDefault();
+
+			var dataObj = {
+				nome : $("#inputNome").val(),
+				email : $("#inputEmail").val(),
+				rg : $("#inputRG").val(),
+				telRes : $("#inputTelres").val(),
+				telCel : $("#inputCel").val(),
+				endereco : $("#inputEnd").val(),
+				instituicao : $("#inputInst").val(),
+				curso : $("#inputCurso").val(),
+				hGrad : $("#inputHorasGrad").val(),
+				hDisp : $("#inputHorasDisp").val(),
+				hEstag : $("#inputHorasEst").val(),
+				curriculo : $("#inputCurriculo").val(),
+				observacoes : $("#taObservacoes").val(),
+				conheceu : $("#inputConheceu").val(),
+				java : $("#sliderJava").val(),
+				php : $("#sliderPhp").val(),
+				mysql : $("#sliderMysql").val(),
+				ajax : $("#sliderAjax").val(),
+				javascript : $("#sliderJavascript").val(),
+				python : $("#sliderPython").val(),
+				csharp : $("#sliderCs").val()
+			};
+
+			$.ajax({
+				cache : false,
+				url : '/SADE/service/dev/cadastraDevService',
+				type : 'post',
+				datatype : 'json',
+				success : function(data) {
+				},
+				data : {
+					json : JSON.stringify(dataObj)
+				}
+			});
+		});
+	</script>
+
+</body>
+</html>
